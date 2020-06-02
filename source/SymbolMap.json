@@ -1,0 +1,29 @@
+{
+  "includes": [
+    "#include \"minecraft/VanillaBlockRegistry.h\"",
+    "#include \"minecraft/VanillaBlockTypeRegistry.h\""
+  ],
+
+  "variables": {
+    "Block** VanillaBlocks::mCobblestone": "0x3051570",
+    "Block** VanillaBlocks::mGoldOre": "0x3051610",
+    "Block** VanillaBlocks::mIronOre": "0x30515F0",
+    "Block** VanillaBlocks::mCoalOre": "0x3051600",
+    "Block** VanillaBlocks::mLapisOre": "0x3051640",
+    "Block** VanillaBlocks::mDiamondOre": "0x3051630",
+    "Block** VanillaBlocks::mRedStoneOre": "0x3051650",
+    "Block** VanillaBlocks::mEmeraldOre": "0x3051418",
+    "WeakPtr<BlockLegacy>* VanillaBlockTypes::mCobblestone": "0x3061478"
+  },
+
+  "functions": [
+    {
+      "name": "?getDefaultState@BlockLegacy@@QEBAAEAVBlock@@XZ",
+      "address": "0x1651D80"
+    },
+    {
+      "name": "?_genRandInt32@Random@Core@@AEAAIXZ",
+      "address": "0x01AC370"
+    }
+  ]
+}
