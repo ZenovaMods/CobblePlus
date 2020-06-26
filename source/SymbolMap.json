@@ -5,25 +5,65 @@
   ],
 
   "variables": {
-    "Block** VanillaBlocks::mCobblestone": "0x3051570",
-    "Block** VanillaBlocks::mGoldOre": "0x3051610",
-    "Block** VanillaBlocks::mIronOre": "0x30515F0",
-    "Block** VanillaBlocks::mCoalOre": "0x3051600",
-    "Block** VanillaBlocks::mLapisOre": "0x3051640",
-    "Block** VanillaBlocks::mDiamondOre": "0x3051630",
-    "Block** VanillaBlocks::mRedStoneOre": "0x3051650",
-    "Block** VanillaBlocks::mEmeraldOre": "0x3051418",
-    "WeakPtr<BlockLegacy>* VanillaBlockTypes::mCobblestone": "0x3061478"
+    "Block** VanillaBlocks::mCobblestone": {
+      "1.14.60.5": "0x3051570",
+      "1.16.0.2": "0x38543A0"
+    },
+    "Block** VanillaBlocks::mGoldOre": {
+      "1.14.60.5": "0x3051610",
+      "1.16.0.2": "0x3854FA8"
+    },
+    "Block** VanillaBlocks::mIronOre": {
+      "1.14.60.5": "0x30515F0",
+      "1.16.0.2": "0x3854F88"
+    },
+    "Block** VanillaBlocks::mCoalOre": {
+      "1.14.60.5": "0x3051600",
+      "1.16.0.2": "0x3854F98"
+    },
+    "Block** VanillaBlocks::mLapisOre": {
+      "1.14.60.5": "0x3051640",
+      "1.16.0.2": "0x3854FC0"
+    },
+    "Block** VanillaBlocks::mDiamondOre": {
+      "1.14.60.5": "0x3051630",
+      "1.16.0.2": "0x3854FB0"
+    },
+    "Block** VanillaBlocks::mRedStoneOre": {
+      "1.14.60.5": "0x3051650",
+      "1.16.0.2": "0x3854FD0"
+    },
+    "Block** VanillaBlocks::mEmeraldOre": {
+      "1.14.60.5": "0x3051418",
+      "1.16.0.2": "0x3854E08"
+    },
+    "WeakPtr<BlockLegacy>* VanillaBlockTypes::mCobblestone": {
+      "1.14.60.5": "0x3061478",
+      "1.16.0.2": "0x3865EC0"
+    }
   },
 
   "functions": [
     {
       "name": "?getDefaultState@BlockLegacy@@QEBAAEAVBlock@@XZ",
-      "address": "0x1651D80"
+      "address": {
+        "1.14.60.5": "0x1651D80",
+        "1.16.0.2": "0x176A720"
+      }
     },
     {
       "name": "?_genRandInt32@Random@Core@@AEAAIXZ",
-      "address": "0x01AC370"
+      "address": {
+        "1.14.60.5": "0x01AC370",
+        "1.16.0.2": "0x01D2B70"
+      }
+    },
+    {
+      "name": "?solidify@LiquidBlock@@QEAA_NAEAVBlockSource@@AEBVBlockPos@@1@Z",
+      "address": {
+        "1.14.60.5": "0x16C86C0",
+        "1.16.0.2": "0x17E1D00"
+      }
     }
   ]
 }

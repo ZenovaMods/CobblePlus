@@ -4,6 +4,7 @@
 #include <memory>
 
 class Level;
+class Level2;
 
 class BlockSource {
 private:
@@ -22,5 +23,14 @@ public:
     }
     const Level& getLevelConst() const {
         return mLevel;
+    }
+    Level2& getLevel2() const {
+        return reinterpret_cast<Level2&>(mLevel);
+    }
+    Level2& getLevel2() {
+        return reinterpret_cast<Level2&>(mLevel);
+    }
+    const Level2& getLevelConst2() const {
+        return reinterpret_cast<Level2&>(mLevel);
     }
 };

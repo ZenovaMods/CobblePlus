@@ -105,7 +105,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <AdditionalDependencies>ZenovaAPI.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ZENOVA_DATA);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -126,7 +126,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <AdditionalDependencies>ZenovaAPI.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ZENOVA_DATA);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -173,19 +173,21 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <AdditionalDependencies>ZenovaAPI.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ZENOVA_DATA);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\minecraft\BlockSource.h" />
+    <ClInclude Include="include\minecraft\Level.h" />
+    <ClInclude Include="include\minecraft\LiquidBlock.h" />
+    <ClInclude Include="include\minecraft\Random.h" />
     <ClInclude Include="include\minecraft\SharedPtr.h" />
-    <ClInclude Include="include\minecraft\util\Random.h" />
     <ClInclude Include="include\minecraft\world\level\BlockSourceListener.h" />
     <ClInclude Include="include\minecraft\world\level\block\BlockLegacy.h" />
     <ClInclude Include="include\minecraft\world\level\block\registry\VanillaBlockRegistry.h" />
     <ClInclude Include="include\minecraft\world\level\block\registry\VanillaBlockTypeRegistry.h" />
     <ClInclude Include="include\minecraft\world\level\IWorldRegistriesProvider.h" />
-    <ClInclude Include="include\minecraft\world\level\Level.h" />
+    <ClInclude Include="source\CobblePlus.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp" />
@@ -201,6 +203,9 @@
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</DeploymentContent>
       <FileType>Document</FileType>
     </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="source\SymbolMap.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,9 +1,11 @@
-#include "Zenova.h"
+#include "CobblePlus.h"
+#include "main.h"
 
 #include "minecraft/VanillaBlockRegistry.h"
 #include "minecraft/VanillaBlockTypeRegistry.h"
 #include "minecraft/BlockSource.h"
 #include "minecraft/Level.h"
+#include "minecraft/LiquidBlock.h"
 
 #include <vector>
 #include <tuple>
@@ -11,8 +13,6 @@
 #include <memory>
 #include <sstream>
 #include <iomanip>
-
-class LiquidBlock;
 
 std::vector<std::pair<int, Block**>> blockWeightList = {};
 int totalWeight = 1;
@@ -40,30 +40,29 @@ Block* getRandomBlock(Random& random) {
 	}
 }
 
-bool (*_solidify)(LiquidBlock*, BlockSource*, BlockPos*, BlockPos*);
-bool solidify(LiquidBlock* self, BlockSource* region, BlockPos* pos, BlockPos* changedNeighbor) {
+bool (*_solidify)(LiquidBlock*, BlockSource&, const BlockPos&, const BlockPos&);
+bool solidify(LiquidBlock* self, BlockSource& region, const BlockPos& pos, const BlockPos& changedNeighbor) {
     if (blockWeightList.empty())
         initBlockWeightList();
 
-    *VanillaBlocks::mCobblestone = getRandomBlock(region->getLevel().getRandom());
+	Random& random = CobblePlus::versionId == "1.14.60.5" ? region.getLevel().getRandom() : region.getLevel2().getRandom();
+    *VanillaBlocks::mCobblestone = getRandomBlock(random);
     bool result = _solidify(self, region, pos, changedNeighbor);
 	*VanillaBlocks::mCobblestone = &(*VanillaBlockTypes::mCobblestone)->getDefaultState();
 	return result;
 }
 
-class CobblePlus : public Zenova::Mod {
-	virtual void Start() {
-		Zenova::Platform::DebugPause();
-		std::cout << "CobblePlus start" << std::endl;
+std::string CobblePlus::versionId;
 
-		Zenova::Platform::CreateHook(reinterpret_cast<void*>(Zenova::Hook::SlideAddress(0x16C86C0)), solidify, (void**)&_solidify);
-	}
+void CobblePlus::Start() {
+	Zenova::Platform::DebugPause();
+	Zenova_Info("CobblePlus start");
 
-	virtual ~CobblePlus() {}
-	virtual void Update() {}
-	virtual void Tick() {}
-	virtual void Stop() {}
-};
+	versionId = GetManager().GetLaunchedVersion();
+	InitVersionPointers(versionId);
+
+	Zenova::Hook::Create(&LiquidBlock::solidify, &solidify, &_solidify);
+}
 
 MOD_FUNCTION Zenova::Mod* CreateMod() {
 	return new CobblePlus;
